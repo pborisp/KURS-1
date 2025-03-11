@@ -60,19 +60,16 @@ public class Main {
         }
     }
 
+
+
     public static void main(String[] args) {
-        int id;
-        id = 1;
         Employee[] employees = new Employee[10];
         Name popov = new Name("Попов", "Борис", "Сергеевич");
-        employees[0] = new Employee(popov, 1, 205000, id);
-        id++;
+        employees[0] = new Employee(popov, 1, 205000, Counter.invokeCounter());
         Name ivanov = new Name("Иванов", "Иван", "Иванович");
-        employees[1] = new Employee(ivanov, 3, 160000, id);
-        id++;
+        employees[1] = new Employee(ivanov, 3, 160000, Counter.invokeCounter());
         Name titov = new Name("Титов", "Сергей", "Сергеевич");
-        employees[2] = new Employee(titov, 1, 190000, id);
-        id++;
+        employees[2] = new Employee(titov, 1, 190000, Counter.invokeCounter());
         getListPersonal(employees);
         System.out.println();
         System.out.println("Сумма затрат на ЗП: " + sumSalary(employees) + " руб");
@@ -85,5 +82,7 @@ public class Main {
         System.out.println();
         titov.setSurName("Михайлович");
         printName(employees);
+
+
     }
 }
