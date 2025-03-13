@@ -14,7 +14,7 @@ public class Employee {
     }
 
     public Employee(int department, int salary,int id) {
-        this(null, department, salary, id);
+        this(null, department, salary, id   );
     }
 
     public Name getName() {
@@ -36,6 +36,7 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
 
     @Override
     public String toString() {

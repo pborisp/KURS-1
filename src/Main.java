@@ -1,175 +1,4 @@
 public class Main {
-
-    public static void getListPersonal(Employee[] list) {
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                System.out.println(list[i]);
-            }
-        }
-    }
-
-    public static int sumSalary(Employee[] list) {
-        int sum = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                sum += list[i].getSalary();
-            }
-        }
-        return sum;
-    }
-
-    public static int minSalary(Employee[] list) {
-        int min = list[0].getSalary();
-        int idMin = 0;
-        for (int i = 1; i < list.length; i++) {
-            if (list[i] != null && list[i].getSalary() < min) {
-                min = list[i].getSalary();
-                idMin = i;
-            }
-        }
-        return idMin;
-    }
-
-    public static int maxSalary(Employee[] list) {
-        int max = list[0].getSalary();
-        int idMax = 0;
-        for (int i = 1; i < list.length; i++) {
-            if (list[i] != null && list[i].getSalary() > max) {
-                max = list[i].getSalary();
-                idMax = i;
-            }
-        }
-        return idMax;
-    }
-
-    public static double averageSalary(Employee[] list) {
-        int count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                count++;
-            }
-        }
-        return sumSalary(list) / count;
-    }
-
-    public static void printName(Employee[] list) {
-        for (int i = 0; i < list.length - 1; i++) {
-            if (list[i] != null) {
-                System.out.println(list[i].getName());
-            }
-        }
-    }
-
-    public static void indexSalary(Employee[] list) {
-        int index = 10;
-        int x;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                x = list[i].getSalary() * index / 100;
-                list[i].setSalary(list[i].getSalary() + x);
-            }
-        }
-    }
-
-    public static int minSalaryDepartment(Employee[] list, int numDep) {
-        int min = list[0].getSalary();
-        int idMin = 0;
-        for (int i = 1; i < list.length; i++) {
-            if (list[i] != null && list[i].getSalary() < min) {
-                if (list[i].getDepartment() == numDep) {
-                    min = list[i].getSalary();
-                    idMin = i;
-                }
-            }
-        }
-        return idMin;
-    }
-
-    public static int maxSalaryDepartment(Employee[] list, int numDep) {
-        int max = list[0].getSalary();
-        int idMax = 0;
-        for (int i = 1; i < list.length; i++) {
-            if (list[i] != null && list[i].getSalary() > max) {
-                if (list[i].getDepartment() == numDep) {
-                    max = list[i].getSalary();
-                    idMax = i;
-                }
-            }
-        }
-        return idMax;
-    }
-
-    public static int sumSalaryDepartment(Employee[] list, int numDep) {
-        int sum = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getDepartment() == numDep) {
-                    sum += list[i].getSalary();
-                }
-            }
-        }
-        return sum;
-    }
-
-    public static double averageSalaryDepartment(Employee[] list, int numDep) {
-        int count = 0;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getDepartment() == numDep) {
-                    count++;
-                }
-            }
-        }
-        return sumSalaryDepartment(list, numDep) / count;
-    }
-
-    public static void indexSalaryDepartment(Employee[] list, int numDep, int index) {
-        int x;
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getDepartment() == numDep) {
-                    x = list[i].getSalary() * index / 100;
-                    list[i].setSalary(list[i].getSalary() + x);
-                }
-            }
-        }
-    }
-
-    public static void getListPersonalDepartment(Employee[] list, int numDep) {
-        System.out.println("Индексация ЗП отдела №" + numDep + " : ");
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getDepartment() == numDep) {
-                    System.out.println(list[i].getName() + "  зарплата: " + list[i].getSalary() + "руб.  id: " + list[i].getId());
-                }
-            }
-        }
-    }
-
-    public static void findPersonalMinSalary(Employee[] list, int numberCompare) {
-        System.out.println("Список сотрудников с ЗП меньше " + numberCompare + " руб. : ");
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getSalary() < numberCompare) {
-                    System.out.println(list[i]);
-                }
-            }
-        }
-        System.out.println();
-    }
-
-    public static void findPersonalMaxSalary(Employee[] list, int numberCompare) {
-        System.out.println("Список сотрудников с ЗП больше " + numberCompare + " руб. : ");
-        for (int i = 0; i < list.length; i++) {
-            if (list[i] != null) {
-                if (list[i].getSalary() > numberCompare) {
-                    System.out.println(list[i]);
-                }
-            }
-        }
-        System.out.println();
-    }
-
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];
         Name popov = new Name("Попов", "Борис", "Сергеевич");
@@ -185,39 +14,77 @@ public class Main {
         Name potapov = new Name("Потапов", "Андрей", "Андреевич");
         employees[5] = new Employee(potapov, 2, 110000, Counter.invokeCounter());
 
-        getListPersonal(employees);
+        // Новый класс
+        EmployeeBook[] employeeBooks = new EmployeeBook[10];
+        for (int i = 0; i < employeeBooks.length; i++) {
+            if (employees[i] != null) {
+                employeeBooks[i] = new EmployeeBook(employees[i]);
+            }
+        }
+        employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
-        System.out.println("Сумма затрат на ЗП: " + sumSalary(employees) + " руб");
+
+
+        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalary(employeeBooks) + " руб");
         System.out.println();
-        System.out.println("Минимальная ЗП у сотрудника: " + employees[minSalary(employees)]);
+        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalary(employeeBooks)]);
         System.out.println();
-        System.out.println("Максимальная ЗП у сотрудника: " + employees[maxSalary(employees)]);
+        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalary(employeeBooks)]);
         System.out.println();
-        System.out.println("Среднее значение ЗП сотрудников: " + averageSalary(employees) + " руб.");
+        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalary(employeeBooks) + " руб.");
         System.out.println();
         titov.setSurName("Михайлович");
-        printName(employees);
+        employeeBooks[0].printName(employeeBooks);
         System.out.println();
 
         // Индексация ЗП
         System.out.println("Индексация ЗП:");
-        indexSalary(employees);
-        getListPersonal(employees);
+        employeeBooks[0].indexSalary(employeeBooks);
+        employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
         // По параметру "номер отдела"
-        System.out.println("Минимальная ЗП у сотрудника: " + employees[minSalaryDepartment(employees, 1)]);
-        System.out.println("Максимальная ЗП у сотрудника: " + employees[maxSalaryDepartment(employees, 1)]);
-        System.out.println("Сумма затрат на ЗП: " + sumSalaryDepartment(employees, 1) + " руб");
-        System.out.println("Среднее значение ЗП сотрудников: " + averageSalaryDepartment(employees, 1) + " руб.");
+        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalaryDepartment(employeeBooks, 1)]);
+        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalaryDepartment(employeeBooks, 1)]);
+        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalaryDepartment(employeeBooks, 1) + " руб");
+        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalaryDepartment(employeeBooks, 1) + " руб.");
+        System.out.println();
 
         // Индексация ЗП отдела
-        indexSalaryDepartment(employees, 1, 7);
-        getListPersonalDepartment(employees, 1);
+        System.out.println("Индексация ЗП отдела");
+        employeeBooks[0].indexSalaryDepartment(employeeBooks, 1, 7);
+        employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
         // Получить число и определить
-        findPersonalMinSalary(employees, 180000);
-        findPersonalMaxSalary(employees, 180000);
+        employeeBooks[0].findPersonalMinSalary(employeeBooks, 180000);
+        employeeBooks[0].findPersonalMaxSalary(employeeBooks, 180000);
+
+        //Добавляем
+        Name sergeev = new Name("Сергеев", "Сергей", "Андреевич");
+        Employee newPerson = new Employee(sergeev, 4, 140000, Counter.invokeCounter());
+
+        //удаляем сотрудника
+        int dellId = 4
+        if (employeeBooks[0].dellPerson(employeeBooks, dellId)) {
+            System.out.println("Cотрудник успешно удален.");
+        } else {
+            System.out.println("Сотрудик с id " + dellId + " не найден.");
+        }
+
+        // Добавляем сотрудника
+        if (employeeBooks[0].addNewPerson(employeeBooks, newPerson)) {
+            System.out.println("Новый сотрудник успешно добавлен.");
+        } else {
+            System.out.println("Свободных мест нет для нового сотрудника.");
+        }
+        employeeBooks[0].getListPers(employeeBooks);
+
+        System.out.println();
+
+        // Поиск сотрудника по id
+        if (!employeeBooks[0].findPerson(employeeBooks, 5)) {
+            System.out.println("Сотрудник не найден!");
+        }
     }
 }
