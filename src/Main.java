@@ -65,9 +65,9 @@ public class Main {
         Employee newPerson = new Employee(sergeev, 4, 140000, Counter.invokeCounter());
 
         //удаляем сотрудника
-        int dellId = 4
+        int dellId = 4;
         if (employeeBooks[0].dellPerson(employeeBooks, dellId)) {
-            System.out.println("Cотрудник успешно удален.");
+            System.out.println("Cотрудник c id:" + dellId + " успешно удален.");
         } else {
             System.out.println("Сотрудик с id " + dellId + " не найден.");
         }
