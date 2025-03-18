@@ -1,3 +1,5 @@
+import java.awt.print.Book;
+
 public class Main {
     public static void main(String[] args) {
         Employee[] employees = new Employee[10];
@@ -21,44 +23,47 @@ public class Main {
                 employeeBooks[i] = new EmployeeBook(employees[i]);
             }
         }
+
+        
+
         employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
 
-        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalary(employeeBooks) + " руб");
+        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalary(employees) + " руб");
         System.out.println();
-        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalary(employeeBooks)]);
+        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalary(employees)]);
         System.out.println();
-        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalary(employeeBooks)]);
+        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalary(employees)]);
         System.out.println();
-        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalary(employeeBooks) + " руб.");
+        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalary(employees) + " руб.");
         System.out.println();
         titov.setSurName("Михайлович");
-        employeeBooks[0].printName(employeeBooks);
+        employeeBooks[0].printName(employees);
         System.out.println();
 
         // Индексация ЗП
         System.out.println("Индексация ЗП:");
-        employeeBooks[0].indexSalary(employeeBooks);
+        employeeBooks[0].indexSalary(employees);
         employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
         // По параметру "номер отдела"
-        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalaryDepartment(employeeBooks, 1)]);
-        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalaryDepartment(employeeBooks, 1)]);
-        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalaryDepartment(employeeBooks, 1) + " руб");
-        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalaryDepartment(employeeBooks, 1) + " руб.");
+        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalaryDepartment(employees, 1)]);
+        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalaryDepartment(employees, 1)]);
+        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalaryDepartment(employees, 1) + " руб");
+        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalaryDepartment(employees, 1) + " руб.");
         System.out.println();
 
         // Индексация ЗП отдела
         System.out.println("Индексация ЗП отдела");
-        employeeBooks[0].indexSalaryDepartment(employeeBooks, 1, 7);
+        employeeBooks[0].indexSalaryDepartment(employees, 1, 7);
         employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
         // Получить число и определить
-        employeeBooks[0].findPersonalMinSalary(employeeBooks, 180000);
-        employeeBooks[0].findPersonalMaxSalary(employeeBooks, 180000);
+        employeeBooks[0].findPersonalMinSalary(employees, 180000);
+        employeeBooks[0].findPersonalMaxSalary(employees, 180000);
 
         //Добавляем
         Name sergeev = new Name("Сергеев", "Сергей", "Андреевич");

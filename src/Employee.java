@@ -5,6 +5,7 @@ public class Employee {
     private int department;
     private int salary;
     private int id;
+    private Book book;
 
     public Employee(Name name, int department, int salary, int id) {
         this.name = name;
@@ -59,4 +60,17 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(name, department);
     }
+
+
+
+
+    private class Book {
+        private Employee Book;
+
+        private Book(Employee book) {
+            this.Book = book;
+        }
+    }
+
+
 }
