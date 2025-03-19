@@ -17,53 +17,46 @@ public class Main {
         employees[5] = new Employee(potapov, 2, 110000, Counter.invokeCounter());
 
         // Новый класс
-        EmployeeBook[] employeeBooks = new EmployeeBook[10];
-        for (int i = 0; i < employeeBooks.length; i++) {
-            if (employees[i] != null) {
-                employeeBooks[i] = new EmployeeBook(employees[i]);
-            }
-        }
+        EmployeeBook employeeBooks = new EmployeeBook(employees);
+        employeeBooks.printBook(employees);
 
-        
-
-        employeeBooks[0].getListPers(employeeBooks);
         System.out.println();
 
-
-        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalary(employees) + " руб");
+        System.out.println("Сумма затрат на ЗП: " + employeeBooks.sumSalary(employees) + " руб");
         System.out.println();
-        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalary(employees)]);
+        int idMin = employeeBooks.minSalary(employees);
+        System.out.println("Минимальная ЗП у сотрудника: " + idMin);
         System.out.println();
-        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalary(employees)]);
+        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks.maxSalary(employees));
         System.out.println();
-        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalary(employees) + " руб.");
+        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks.averageSalary(employees) + " руб.");
         System.out.println();
         titov.setSurName("Михайлович");
-        employeeBooks[0].printName(employees);
+        employeeBooks.printName(employees);
         System.out.println();
 
         // Индексация ЗП
         System.out.println("Индексация ЗП:");
-        employeeBooks[0].indexSalary(employees);
-        employeeBooks[0].getListPers(employeeBooks);
+        employeeBooks.indexSalary(employees);
+        employeeBooks.getListPers(employees);
         System.out.println();
 
         // По параметру "номер отдела"
-        System.out.println("Минимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].minSalaryDepartment(employees, 1)]);
-        System.out.println("Максимальная ЗП у сотрудника: " + employeeBooks[employeeBooks[0].maxSalaryDepartment(employees, 1)]);
-        System.out.println("Сумма затрат на ЗП: " + employeeBooks[0].sumSalaryDepartment(employees, 1) + " руб");
-        System.out.println("Среднее значение ЗП сотрудников: " + employeeBooks[0].averageSalaryDepartment(employees, 1) + " руб.");
+        System.out.println("Минимальная ЗП у сотрудника отдела: " + employeeBooks.minSalaryDepartment(employees, 1));
+        System.out.println("Максимальная ЗП у сотрудника отдела: " + employeeBooks.maxSalaryDepartment(employees, 1));
+        System.out.println("Сумма затрат на ЗП отдела: " + employeeBooks.sumSalaryDepartment(employees, 1) + " руб");
+        System.out.println("Среднее значение ЗП сотрудников отдела: " + employeeBooks.averageSalaryDepartment(employees, 1) + " руб.");
         System.out.println();
 
         // Индексация ЗП отдела
         System.out.println("Индексация ЗП отдела");
-        employeeBooks[0].indexSalaryDepartment(employees, 1, 7);
-        employeeBooks[0].getListPers(employeeBooks);
+        employeeBooks.indexSalaryDepartment(employees, 1, 7);
+        employeeBooks.getListPers(employees);
         System.out.println();
 
         // Получить число и определить
-        employeeBooks[0].findPersonalMinSalary(employees, 180000);
-        employeeBooks[0].findPersonalMaxSalary(employees, 180000);
+        employeeBooks.findPersonalMinSalary(employees, 180000);
+        employeeBooks.findPersonalMaxSalary(employees, 180000);
 
         //Добавляем
         Name sergeev = new Name("Сергеев", "Сергей", "Андреевич");
@@ -71,25 +64,30 @@ public class Main {
 
         //удаляем сотрудника
         int dellId = 4;
-        if (employeeBooks[0].dellPerson(employeeBooks, dellId)) {
+        if (employeeBooks.dellPerson(employees, dellId)) {
             System.out.println("Cотрудник c id:" + dellId + " успешно удален.");
         } else {
             System.out.println("Сотрудик с id " + dellId + " не найден.");
         }
+        employeeBooks.printBook(employees);
+        System.out.println();
+
 
         // Добавляем сотрудника
-        if (employeeBooks[0].addNewPerson(employeeBooks, newPerson)) {
+        if (employeeBooks.addNewPerson(newPerson)) {
             System.out.println("Новый сотрудник успешно добавлен.");
         } else {
             System.out.println("Свободных мест нет для нового сотрудника.");
         }
-        employeeBooks[0].getListPers(employeeBooks);
-
+        employeeBooks.printBook(employees);
         System.out.println();
 
         // Поиск сотрудника по id
-        if (!employeeBooks[0].findPerson(employeeBooks, 5)) {
+        int findOfId = 5;
+        if (!employeeBooks.findPerson(employees, findOfId)) {
             System.out.println("Сотрудник не найден!");
+        } else {
+            System.out.println(" - результат поиска сотрудника с id=" + findOfId);
         }
     }
 }

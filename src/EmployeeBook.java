@@ -1,17 +1,29 @@
-import java.util.Objects;
+import java.util.Arrays;
 
 class EmployeeBook {
-    private Employee book;
-    private int id;
+    private Employee[] book;
 
-
-    public EmployeeBook(Employee list) {
-        this.book = list;
-        this.id = list.getId();
+    public EmployeeBook(Employee[] list) {
+        if (list != null) {
+            this.book = list;
+        }
     }
 
-    public void getListPers(EmployeeBook[] employeeBook) {
-        for (EmployeeBook i : employeeBook) {
+    public Employee[] getBook() {
+        return book;
+    }
+
+    public void printBook(Employee[] book) {
+        for (int i = 0; i < book.length - 1; i++) {
+            if (book[i] != null) {
+                System.out.println(this.book[i]);
+            }
+        }
+    }
+
+
+    public void getListPers(Employee[] employeeBook) {
+        for (Employee i : employeeBook) {
             if (i != null) {
                 System.out.println(i);
             }
@@ -40,11 +52,11 @@ class EmployeeBook {
 
     public int minSalary(Employee[] list) {
         int min = list[0].getSalary();
-        int idMin = 0;
+        int idMin = 1;
         for (int i = 1; i < list.length; i++) {
             if (list[i] != null && list[i].getSalary() < min) {
                 min = list[i].getSalary();
-                idMin = i;
+                idMin = list[i].getId();
             }
         }
         return idMin;
@@ -52,11 +64,11 @@ class EmployeeBook {
 
     public int maxSalary(Employee[] list) {
         int max = list[0].getSalary();
-        int idMax = 0;
+        int idMax = 1;
         for (int i = 1; i < list.length; i++) {
             if (list[i] != null && list[i].getSalary() > max) {
                 max = list[i].getSalary();
-                idMax = i;
+                idMax = list[i].getId();
             }
         }
         return idMax;
@@ -83,11 +95,11 @@ class EmployeeBook {
 
     public int minSalaryDepartment(Employee[] list, int numDep) {
         int min = list[0].getSalary();
-        int idMin = 0;
+        int idMin = 1;
         for (int i = 1; i < list.length; i++) {
             if (list[i] != null && list[i].getSalary() < min && list[i].getDepartment() == numDep) {
                 min = list[i].getSalary();
-                idMin = i;
+                idMin = list[i].getId();
             }
         }
         return idMin;
@@ -95,11 +107,11 @@ class EmployeeBook {
 
     public int maxSalaryDepartment(Employee[] list, int numDep) {
         int max = list[0].getSalary();
-        int idMax = 0;
+        int idMax = 1;
         for (int i = 1; i < list.length; i++) {
             if (list[i] != null && list[i].getSalary() > max && list[i].getDepartment() == numDep) {
                 max = list[i].getSalary();
-                idMax = i;
+                idMax = list[i].getId();
             }
         }
         return idMax;
@@ -164,20 +176,31 @@ class EmployeeBook {
         System.out.println();
     }
 
-    public boolean addNewPerson(EmployeeBook[] book, Employee newPerson) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] == null) {
-                book[i] = new EmployeeBook(newPerson);
+    public boolean addNewPerson(Employee newPerson) {
+        for (int i = 0; i < this.book.length; i++) {
+            if (this.book[i] == null) {
+                this.book[i] = newPerson;
                 return true;
             }
         }
         return false;
     }
 
-    public boolean dellPerson(EmployeeBook[] book, int id) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && book[i].id == id) {
-                book[i] = null;
+    public boolean dellPerson(Employee[] employees, int id) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getId() == id) {
+                this.book[i] = null;
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean findPerson(Employee[] employees, int id) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getId() == id) {
+                System.out.print(this.book[i]);
                 return true;
             }
         }
@@ -187,20 +210,8 @@ class EmployeeBook {
     @Override
     public String toString() {
         return "EmployeeBook{" +
-                "book=" + book +
-                ", id=" + id +
+                "book=" + Arrays.toString(book) +
                 '}';
     }
 
-    public boolean findPerson(EmployeeBook[] book, int id) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] != null && book[i].id == id) {
-                System.out.println("Найден сотрудник: " + book[i]);
-                return true;
-            }
-        }
-        return false;
-
-
-    }
 }
